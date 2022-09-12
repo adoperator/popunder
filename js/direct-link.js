@@ -6,21 +6,11 @@ try {
 	isFramed = true;
 }
 
-// получение предыдущей страницы
-document.referrer
-console.log('document.referrer')
-console.log(document.referrer)
-
-    var host = window.location.host
-    var startLocation = window.location.pathname
-    var frame = window.frameElement;
-    var hasFrame = false;
+    var host = window.location.host;
+    var startLocation = window.location.pathname;
+    var params = window.location.search;
 
 (function () {
-
-    var host = window.location.host
-    var startLocation = window.location.pathname
-
     function redirect(rsn, url) {
         if ('0' == 1) console.log('>>> function redirect() -> url=' + url + ' debug=0 reason=' + rsn);
         if ('0' == 0) {
@@ -31,7 +21,15 @@ console.log(document.referrer)
         }
     }
 
-    var newUrl = `${host}${startLocation}?iframe=${isFramed}`
-
+    var newUrl;
+    if (isFramed) {
+        newUrl = `https://google.com/&output=embed`;
+    } else {
+        if (params) {
+            newUrl = `${host}${startLocation}${params}&iframe=${isFramed}`; 
+        } else {
+            newUrl = `${host}${startLocation}?iframe=${isFramed}`;
+        }
+    }
     redirect("nextRedirect", newUrl);
   })();
