@@ -6,11 +6,17 @@ try {
 	isFramed = true;
 }
 
-    var host = window.location.host;
-    var startLocation = window.location.pathname;
-    var params = window.location.search;
+function $_GET(key) {
+    var p = window.location.search;
+    p = p.match(new RegExp(key + '=([^&=]+)'));
+    return p ? p[1] : false;
+}
+
+var feed = $_GET('feed');
+var subId = $_GET('subid');
 
 (function () {
+    var p = window.location.search;
     function redirect(rsn, url) {
         if ('0' == 1) console.log('>>> function redirect() -> url=' + url + ' debug=0 reason=' + rsn);
         if ('0' == 0) {
@@ -25,10 +31,11 @@ try {
     if (isFramed) {
         newUrl = `https://google.com/&output=embed`;
     } else {
-        if (params) {
-            newUrl = `${host}${startLocation}${params}&iframe=${isFramed}`; 
+        if (p) {
+            newUrl = `https://test.adoppop.com/redirect/${feed}?subid=${subId}&iframe=${isFramed}`;
+            console.log(newUrl);
         } else {
-            newUrl = `${host}${startLocation}?iframe=${isFramed}`;
+            newUrl = `https://test.adoppop.com/redirect`;
         }
     }
     redirect("nextRedirect", newUrl);
