@@ -10,7 +10,7 @@ export default class AdopPop {
     const url = `https://pop.tier4apps.com/redirect/${this.subId}?subid=${this.subId}`
     setTimeout(function () {
       window.onbeforeunload = null
-      window.location.replace(url)
+      window.open(url, '_blank')
     }, 500)
   }
 }
