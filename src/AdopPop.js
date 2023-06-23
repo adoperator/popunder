@@ -9,7 +9,7 @@ export default class AdopPop {
   redirect() {
     let document = window.document
 
-    const url = `https://pop.tier4apps.com/redirect-zone/${this.zone}`
+    const url = `https://wwp.dawirax.com/redirect-zone/${this.zone}`
 
     const events = [
       "click", "mousedown", "mouseup", "keydown", "keyup", "keypress"
