@@ -9,7 +9,7 @@ export default class AdopPop {
   redirect() {
     let document = window.document
 
-    const url = `https://wwp.trifms.com/redirect-zone/${this.zone}`
+    const url = `https://%popunder_redirect_host%/redirect-zone/${this.zone}`
 
     const events = [
       "click", "mousedown", "mouseup", "keydown", "keyup", "keypress"
